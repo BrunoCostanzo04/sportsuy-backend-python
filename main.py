@@ -8,7 +8,7 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 api = Api(app)
 
 class GetPrediction(Resource):
-  def get(self):
+  def post(self):
     try:
       data = request.get_json()
       print(data)
