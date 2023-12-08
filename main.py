@@ -11,9 +11,11 @@ class GetPrediction(Resource):
   def get(self):
     try:
       data = request.get_json()
+      print(data)
       local_team = int(data.get('localTeam'))
       away_team = int(data.get('awayTeam'))
-
+      print(local_team)
+      print(away_team)
       predict_output = GetPrediction.predict(local_team, away_team)
       predict_output_str = str(predict_output)
       response_data = {'prediction': predict_output_str}
