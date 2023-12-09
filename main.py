@@ -11,7 +11,6 @@ class GetPrediction(Resource):
   def post(self):
     try:
       data = request.get_json()
-      print(data)
       local_team = int(data.get('localTeam'))
       away_team = int(data.get('awayTeam'))
       print(local_team)
@@ -30,6 +29,7 @@ class GetPrediction(Resource):
         model = pickle.load(f_in)
 
     y_pred = model.predict([[local_team, away_team]])
+    print(y_pred)
 
     return y_pred[0]
 
