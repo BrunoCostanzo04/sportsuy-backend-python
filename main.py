@@ -54,12 +54,12 @@ class GetPrediction(Resource):
     except Exception as error:
       return {'error': str(error)}
     
-  def predict(local_team, away_team):
+  def predict(local_team, away_team, home_team_level, away_team_level):
 
     pkl_filename = "model_v2.pkl"
     with open(pkl_filename, 'rb') as f_in:
         model = pickle.load(f_in)
-    y_pred = model.predict([[local_team, away_team]])
+    y_pred = model.predict([[local_team, away_team, home_team_level, away_team_level]])
     print(y_pred)
 
     return y_pred[0]
